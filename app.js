@@ -41,6 +41,32 @@ app.post("/view-all-attendees", async(req, res) => {
     const team=await AddAttendee.find()
     res.json(team)
 })
+
+const AddTicket=mongoose.model("AddTicket",new mongoose.Schema(
+    {
+        TicketID: String,
+        RegistrationID: String,
+        CelebrityName: String,
+        TicketCategory: String,
+        NumberofGuests: String,
+        PreferredTimeSlot: String,
+        PaymentAmount: String,
+        PaymentStatus: String
+
+    }
+))
+
+app.get("/test", (req, res) => {
+    res.send("hello")
+})
+
+app.post("/add-ticket", async (req, res) => {
+   await AddTicket.create(req.body)
+    res.json({"status": "success"})
+})
+
+
+
 app.listen(7500, () => {
     console.log("server started")
 })
