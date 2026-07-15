@@ -69,6 +69,30 @@ app.post("/view-all-tickets", async(req, res) => {
     res.json(team)
 })
 
+const AddLounge=mongoose.model("AddLounge",new mongoose.Schema(
+    {
+        AllocationID: String,
+        RegistrationID: String,
+        LoungeNumber: String,
+        SeatNumber: String,
+        CheckinTime: String,
+        MeetDuration: String,
+        StaffCoordinator: String,
+        Remarks: String
+
+    }
+))
+
+app.get("/test", (req, res) => {
+    res.send("hello")
+})
+
+app.post("/add-lounge", async (req, res) => {
+   await AddLounge.create(req.body)
+    res.json({"status": "success"})
+})
+
+
 app.listen(7500, () => {
     console.log("server started")
 })
