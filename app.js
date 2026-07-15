@@ -64,8 +64,10 @@ app.post("/add-ticket", async (req, res) => {
    await AddTicket.create(req.body)
     res.json({"status": "success"})
 })
-
-
+app.post("/view-all-tickets", async(req, res) => {
+    const team=await AddTicket.find()
+    res.json(team)
+})
 
 app.listen(7500, () => {
     console.log("server started")
