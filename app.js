@@ -1,19 +1,19 @@
-const express=require("express")
-const mongoose=require("mongoose")
-const cors=require("cors")
-const app=express()
+const express = require("express")
+const mongoose = require("mongoose")
+const cors = require("cors")
+const app = express()
 app.use(cors())
 app.use(express.json())
-mongoose.connect("mongodb+srv://sivaganga:22youmewe22@cluster0.v60twit.mongodb.net/coursedb").then(
-    () =>{
+mongoose.connect("mongodb://sivaganga:<db_password>@ac-ts2ynr6-shard-00-00.v60twit.mongodb.net:27017,ac-ts2ynr6-shard-00-01.v60twit.mongodb.net:27017,ac-ts2ynr6-shard-00-02.v60twit.mongodb.net:27017/?ssl=true&replicaSet=atlas-yzc83x-shard-0&authSource=admin&appName=Cluster0").then(
+    () => {
         console.log("mongodb connected")
     }
 ).catch(
-    (error) =>{
+    (error) => {
         console.log(error)
     }
 )
-const AddAttendee=mongoose.model("AddAttendee",new mongoose.Schema(
+const AddAttendee = mongoose.model("AddAttendee", new mongoose.Schema(
     {
 
         RegistrationID: String,
@@ -33,16 +33,16 @@ app.get("/test", (req, res) => {
 })
 
 app.post("/add-attendee", async (req, res) => {
-   await AddAttendee.create(req.body)
-    res.json({"status": "success"})
+    await AddAttendee.create(req.body)
+    res.json({ "status": "success" })
 })
 
-app.post("/view-all-attendees", async(req, res) => {
-    const team=await AddAttendee.find()
+app.post("/view-all-attendees", async (req, res) => {
+    const team = await AddAttendee.find()
     res.json(team)
 })
 
-const AddTicket=mongoose.model("AddTicket",new mongoose.Schema(
+const AddTicket = mongoose.model("AddTicket", new mongoose.Schema(
     {
         TicketID: String,
         RegistrationID: String,
@@ -61,15 +61,15 @@ app.get("/test", (req, res) => {
 })
 
 app.post("/add-ticket", async (req, res) => {
-   await AddTicket.create(req.body)
-    res.json({"status": "success"})
+    await AddTicket.create(req.body)
+    res.json({ "status": "success" })
 })
-app.post("/view-all-tickets", async(req, res) => {
-    const team=await AddTicket.find()
+app.post("/view-all-tickets", async (req, res) => {
+    const team = await AddTicket.find()
     res.json(team)
 })
 
-const AddLounge=mongoose.model("AddLounge",new mongoose.Schema(
+const AddLounge = mongoose.model("AddLounge", new mongoose.Schema(
     {
         AllocationID: String,
         RegistrationID: String,
@@ -88,12 +88,12 @@ app.get("/test", (req, res) => {
 })
 
 app.post("/add-lounge", async (req, res) => {
-   await AddLounge.create(req.body)
-    res.json({"status": "success"})
+    await AddLounge.create(req.body)
+    res.json({ "status": "success" })
 })
 
-app.post("/view-all-lounges", async(req, res) => {
-    const team=await AddLounge.find()
+app.post("/view-all-lounges", async (req, res) => {
+    const team = await AddLounge.find()
     res.json(team)
 })
 
