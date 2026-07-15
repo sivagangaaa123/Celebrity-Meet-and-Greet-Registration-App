@@ -4,7 +4,7 @@ const cors = require("cors")
 const app = express()
 app.use(cors())
 app.use(express.json())
-mongoose.connect("mongodb://sivaganga:<db_password>@ac-ts2ynr6-shard-00-00.v60twit.mongodb.net:27017,ac-ts2ynr6-shard-00-01.v60twit.mongodb.net:27017,ac-ts2ynr6-shard-00-02.v60twit.mongodb.net:27017/?ssl=true&replicaSet=atlas-yzc83x-shard-0&authSource=admin&appName=Cluster0").then(
+mongoose.connect("mongodb://sivaganga:22youmewe22@ac-ts2ynr6-shard-00-00.v60twit.mongodb.net:27017,ac-ts2ynr6-shard-00-01.v60twit.mongodb.net:27017,ac-ts2ynr6-shard-00-02.v60twit.mongodb.net:27017/coursedb?ssl=true&replicaSet=atlas-yzc83x-shard-0&authSource=admin&appName=Cluster0").then(
     () => {
         console.log("mongodb connected")
     }
