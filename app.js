@@ -92,6 +92,11 @@ app.post("/add-lounge", async (req, res) => {
     res.json({"status": "success"})
 })
 
+app.post("/view-all-lounges", async(req, res) => {
+    const team=await AddLounge.find()
+    res.json(team)
+})
+
 
 app.listen(7500, () => {
     console.log("server started")
