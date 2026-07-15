@@ -36,6 +36,11 @@ app.post("/add-attendee", async (req, res) => {
    await AddAttendee.create(req.body)
     res.json({"status": "success"})
 })
+
+app.post("/view-all-attendees", async(req, res) => {
+    const team=await AddAttendee.find()
+    res.json(team)
+})
 app.listen(7500, () => {
     console.log("server started")
 })
